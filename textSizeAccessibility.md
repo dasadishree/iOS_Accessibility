@@ -1,3 +1,3 @@
-More detailed guide coming soon... but check out this infographic!
+# More detailed guide coming soon... but check out this infographic!
 
 https://hc-cdn.hel1.your-objectstorage.com/s/v3/aaebe06c43c175a80b3b50c7f32048b719907156_textaccessibilityinfographic.pdf
