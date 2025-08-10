@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct iOSaccessibilityApp: App {
+    @StateObject private var textSizeManager = TextSizeManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(textSizeManager)
         }
     }
 }
