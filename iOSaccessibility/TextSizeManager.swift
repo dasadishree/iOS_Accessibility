@@ -7,10 +7,8 @@ class TextSizeManager: ObservableObject {
     private let userDefaultsKey = "TextSizeMultiplier"
     
     init() {
-        // Load saved text size from UserDefaults
         textSizeMultiplier = UserDefaults.standard.double(forKey: userDefaultsKey)
         
-        // Set default value if none exists
         if textSizeMultiplier == 0.0 {
             textSizeMultiplier = 1.0
         }
