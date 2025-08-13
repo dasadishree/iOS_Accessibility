@@ -17,7 +17,7 @@ struct NativeScalableText: View {
                 //top navbar
                 HStack{
                     Image(systemName: "textformat.size")
-                    Text("Scalable Text: Embedded")
+                    Text("Scalable Text: Native")
                 }
                 .font(.largeTitle)
                 .foregroundStyle(.white)

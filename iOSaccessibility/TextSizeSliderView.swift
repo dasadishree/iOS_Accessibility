@@ -7,12 +7,12 @@ struct TextSizeSliderView: View {
         VStack(spacing: 16) {
             Text("Text Size")
                 .font(.headline)
-                .foregroundColor(.black)
+                .foregroundColor(.pink)
             
             HStack {
                 Text("A")
                     .font(.system(size: 12))
-                    .foregroundColor(.black)
+                    .foregroundColor(.pink)
                 
                 Slider(
                     value: Binding(
@@ -26,15 +26,15 @@ struct TextSizeSliderView: View {
                 
                 Text("A")
                     .font(.system(size: 24))
-                    .foregroundColor(.black)
+                    .foregroundColor(.pink)
             }
             
             Text("\(Int(textSizeManager.textSizeMultiplier * 100))%")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.pink)
         }
         .padding()
-        .background(Color(.white))
+        .background(Color(red: 255/255, green: 220/255, blue: 230/255))
         .cornerRadius(12)
         .shadow(radius: 2)
     }
