@@ -17,15 +17,15 @@ struct ContentView: View {
                 //heading
                 VStack {
                     Image(systemName: "cursorarrow")
-                        .font(.system(size: 75))
+                        .font(.largeTitle)
                         .foregroundStyle(.pink)
                     Text("iOS Accessibility Tools")
-                        .font(.system(size: 30 * textSizeManager.textSizeMultiplier))
+                        .font(.largeTitle)
                         .foregroundStyle(.pink)
                         .frame(maxWidth: .infinity)
                         .multilineTextAlignment(.center)
                     Text("Tools for developers to learn how to make their apps accessible to all users.")
-                        .font(.system(size: 16 * textSizeManager.textSizeMultiplier))
+                        .font(.body)
                         .foregroundStyle(.black)
                         .multilineTextAlignment(.center)
                 }
@@ -37,7 +37,7 @@ struct ContentView: View {
                         Image(systemName: "textformat.size")
                         Text("Scalable Text")
                     }
-                    .font(.system(size: 18 * textSizeManager.textSizeMultiplier))
+                    .font(.title2)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(Color(red: 255/255, green: 220/255, blue: 230/255))
