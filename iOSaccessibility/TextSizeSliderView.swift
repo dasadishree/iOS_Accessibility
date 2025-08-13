@@ -36,6 +36,5 @@ struct TextSizeSliderView: View {
         .padding()
         .background(Color(red: 255/255, green: 220/255, blue: 230/255))
         .cornerRadius(12)
-        .shadow(radius: 2)
     }
 }

@@ -4,7 +4,6 @@
 //
 //  Created by Adishree Das on 8/13/25.
 //
-
 import SwiftUI
 
 struct NativeScalableText: View {
@@ -18,6 +17,7 @@ struct NativeScalableText: View {
                 HStack{
                     Image(systemName: "textformat.size")
                     Text("Scalable Text: Native")
+                        .multilineTextAlignment(.center)
                 }
                 .font(.largeTitle)
                 .foregroundStyle(.white)
@@ -28,18 +28,16 @@ struct NativeScalableText: View {
                 ScrollView {
                     if currentStep == 0 {
                         VStack(spacing: 30) {
-                            Text("Example:")
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
+                            Text("SwiftUI & Apple's native accessibility feature allows your application's users to be able to go to their device's settings app and change the text size for all applications. Here's how this can be done in less than a minute!")
+                                .font(.title2)
                                 .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                            
-                            TextSizeSliderView()
-                                .padding(.horizontal, 5)
+                                .foregroundStyle(.pink)
+                                .padding(.horizontal, 10)
                             
                             Text("Click through the arrows on the bottom left and bottom right to go through each step.")
-                                .font(.system(size: 18 * textSizeManager.textSizeMultiplier))
+                                .font(.title3)
                                 .multilineTextAlignment(.center)
-                                .padding(20)
+                                .padding(.horizontal, 20)
                                 .foregroundStyle(.pink)
                             
                             Spacer()
@@ -48,215 +46,21 @@ struct NativeScalableText: View {
                     
                     if currentStep == 1 {
                         VStack(spacing: 20) {
-                            Text("Step 1. Create the TextSizeManager Class")
-                                .font(.system(size: 30 * textSizeManager.textSizeMultiplier))
+                            Text("1. Use SwiftUI's standard font styles.")
+                                .font(.title2)
                                 .multilineTextAlignment(.center)
                                 .foregroundStyle(.pink)
+                                .bold()
                             
-                            Text("This is the central logic for your scalable text feature. It's an ObservableObject that holds the current text size multiplier and handles persistence.")
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
+                            Text("Your app's text will automatically scale with the user's system settings without extra effort or code needed - in one single line. See the next step for all possible SwiftUI styles and examples of them being used.")
+                                .font(.title3)
                                 .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                            
-                            Divider()
-                            
-                            Text("1. Create the TextSizeManager Class")
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
                                 .foregroundStyle(.pink)
-                                .multilineTextAlignment(.center)
-                            
-                            Text("2. Paste the following code into the file. This class uses UserDefaults for quick, local saving of the text size and SwiftData to save the setting to the user's profile for long-term, user-specific persistence.")
-                                .padding(10)
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
-                                .foregroundStyle(.pink)
-                                .multilineTextAlignment(.center)
                             
                             // Code example
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("TextSizeManager.swift")
-                                    .font(.system(size: 16 * textSizeManager.textSizeMultiplier))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.pink)
-                                
-                                Text("""
-import SwiftUI
-import Foundation
-
-class TextSizeManager: ObservableObject {
-    @Published var textSizeMultiplier: Double = 1.0
-    
-    private let userDefaultsKey = "TextSizeMultiplier"
-    
-    init() {
-        // saves the preferred text size to user defaults to ensure persistence
-        textSizeMultiplier = UserDefaults.standard.double(forKey: userDefaultsKey)
-
-        // sets the default text size
-        if textSizeMultiplier == 0.0 {
-            textSizeMultiplier = 1.0
-        }
-    }
-    
-// updates text size and resets the multiplier and user defaults
-    func updateTextSize(_ newSize: Double) {
-        textSizeMultiplier = newSize
-        UserDefaults.standard.set(newSize, forKey: userDefaultsKey)
-    }
-}
-""")
-                                .font(.system(size: 14 * textSizeManager.textSizeMultiplier))
-                                .foregroundStyle(.black)
-                                .padding()
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
-                            }
-                            .padding()
-                            
-                            Spacer()
-                        }
-                    }
-                    
-                    if currentStep == 2 {
-                        VStack(spacing: 20) {
-                            Text("Step 2. Add TextSizeManager to Your App")
-                                .font(.system(size: 30 * textSizeManager.textSizeMultiplier))
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.pink)
-                            
-                            Text("Inject the TextSizeManager as an environment object in your main app file so it's available throughout your app. You should already have an App file, just add the extra lines to it. ")
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                            
-                            Divider()
-                            
-                            // Code example
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("YourApp.swift")
-                                    .font(.system(size: 16 * textSizeManager.textSizeMultiplier))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.pink)
-                                
-                                Text("""
-import SwiftUI
-
-@main
-struct YourApp: App {
-    // add this line to introduce the environment object
-    @StateObject private var textSizeManager = TextSizeManager()
-    
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                // and this line to add the environment object
-                .environmentObject(textSizeManager)
-        }
-    }
-}
-""")
-                                .font(.system(size: 14 * textSizeManager.textSizeMultiplier))
-                                .foregroundStyle(.black)
-                                .padding()
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
-                            }
-                            .padding()
-                            
-                            Spacer()
-                        }
-                    }
-                    
-                    if currentStep == 3 {
-                        VStack(spacing: 20) {
-                            Text("Step 3. Create the Text Size Slider View")
-                                .font(.system(size: 30 * textSizeManager.textSizeMultiplier))
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.pink)
-                            
-                            Text("Create a SwiftUI view that provides the interactive slider for users to adjust text size. You can customize this with different colors as you wish, but here is the exact code for this app!")
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                            
-                            Divider()
-                            
-                            // Code example
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("TextSizeSliderView.swift")
-                                    .font(.system(size: 16 * textSizeManager.textSizeMultiplier))
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.pink)
-                                
-                                Text("""
-import SwiftUI 
-
-struct TextSizeSliderView: View {
-    // make sure to have this line to introduce the environment object
-    @EnvironmentObject var textSizeManager: TextSizeManager
-    
-    var body: some View {
-        VStack(spacing: 16) {
-            Text("Text Size")
-                .font(.headline)
-                .foregroundColor(.black)
-            
-            HStack {
-                Text("A").font(.system(size: 12))
-                    .foregroundColor(.black)
-                
-
-                // this slider is binded to the textSizeMultiplier, so changing the slider changes the value of the multiplier
-                Slider(value: Binding(
-                    get: { textSizeManager.textSizeMultiplier },
-                    set: { textSizeManager.updateTextSize($0) }
-                ), in: 0.5...2.0, step: 0.1)
-                .accentColor(.pink)
-
-                Text("A").font(.system(size: 24))
-                    .foregroundColor(.black)
-            }
-
-            Text("\\(Int(textSizeManager.textSizeMultiplier * 100))%")
-                .font(.caption)
-                .foregroundColor(.secondary)
-        }
-        .padding()
-        .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(radius: 2)
-    }
-}
-""")
-                                .font(.system(size: 14 * textSizeManager.textSizeMultiplier))
-                                .foregroundStyle(.black)
-                                .padding()
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
-                            }
-                            .padding()
-                            
-                            Spacer()
-                        }
-                    }
-                    
-                    if currentStep == 4 {
-                        VStack(spacing: 20) {
-                            Text("Step 4. Apply Text Size Scaling")
-                                .font(.system(size: 30 * textSizeManager.textSizeMultiplier))
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.pink)
-                            
-                            Text("Use the TextSizeManager in your views by accessing it as an environment object and multiplying your base font sizes. Do this by adding the multiplier to each font size.")
-                                .font(.system(size: 20 * textSizeManager.textSizeMultiplier))
-                                .multilineTextAlignment(.center)
-                                .foregroundStyle(.black)
-                            
-                            Divider()
-                            
-                            // Code example
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text("Example Usage, your code will look different.")
-                                    .font(.system(size: 16 * textSizeManager.textSizeMultiplier))
+                                Text("Example Usage, your code will look different")
+                                    .font(.body)
                                     .fontWeight(.bold)
                                     .foregroundStyle(.pink)
                                 
@@ -267,19 +71,16 @@ struct YourContentView: View {
     var body: some View {
         VStack {
             Text("Hello, World!")
-                // instead of just writing size: 16, multiply this by the textSizeManager.textSizeMultiplier value
-                .font(.system(size: 16 * textSizeManager.textSizeMultiplier))
-            
-            Text("This text will scale with the slider")
-                .font(.system(size: 14 * textSizeManager.textSizeMultiplier))
+                // instead of just writing any numerical text size like "size: 16", write a SwiftUI font style like .title or .body
+                .font(.body)
         }
     }
 }
 """)
-                                .font(.system(size: 14 * textSizeManager.textSizeMultiplier))
-                                .foregroundStyle(.black)
+                                .font(.caption)
+                                .foregroundStyle(.pink)
                                 .padding()
-                                .background(Color(.systemGray6))
+                                .background(Color(red: 255/255, green: 220/255, blue: 230/255))
                                 .cornerRadius(8)
                             }
                             .padding()
@@ -287,9 +88,56 @@ struct YourContentView: View {
                             Spacer()
                         }
                     }
+                    
+                    if currentStep == 2 {
+                        VStack(spacing: 20) {
+                            Text("2. SwiftUI standard font style examples:")
+                                .font(.title2)
+                                .multilineTextAlignment(.center)
+                                .foregroundStyle(.pink)
+                                .bold()
+                            
+                            Divider()
+                            Text(".font(.largeTitle)")
+                                .font(.largeTitle)
+                                .foregroundStyle(.pink)
+                            Text(".font(.title)")
+                                .font(.title)
+                                .foregroundStyle(.pink)
+                            Text(".font(.title2)")
+                                .font(.title2)
+                                .foregroundStyle(.pink)
+                            Text(".font(.title3)")
+                                .font(.title3)
+                                .foregroundStyle(.pink)
+                            Text(".font(.headline)")
+                                .font(.headline)
+                                .foregroundStyle(.pink)
+                            Text(".font(.subheadling)")
+                                .font(.subheadline)
+                                .foregroundStyle(.pink)
+                            Text(".font(.body)")
+                                .font(.body)
+                                .foregroundStyle(.pink)
+                            Text(".font(.callout)")
+                                .font(.callout)
+                                .foregroundStyle(.pink)
+                            Text(".font(.footnote)")
+                                .font(.footnote)
+                                .foregroundStyle(.pink)
+                            Text(".font(.caption)")
+                                .font(.caption)
+                                .foregroundStyle(.pink)
+                            Text(".font(.caption2)")
+                                .font(.caption)
+                                .foregroundStyle(.pink)
+                        }
+                    }
+                    
+                   
                 }
                 
-                // Navigation arrows
+                // nav arrows
                 HStack{
                     Button(action: {
                         if currentStep > 0 {
@@ -298,28 +146,28 @@ struct YourContentView: View {
                     }) {
                         Image(systemName: "arrow.left")
                             .font(.largeTitle)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(currentStep==0 ? .pink : .white)
                     }
                     .disabled(currentStep == 0)
                     
                     Spacer()
                     
-                    Text("\(currentStep + 1) of 5")
+                    Text("\(currentStep + 1) of 3")
                         .font(.system(size: 18 * textSizeManager.textSizeMultiplier))
                         .foregroundStyle(.white)
                     
                     Spacer()
                     
                     Button(action: {
-                        if currentStep < 5 {
+                        if currentStep < 2 {
                             currentStep += 1
                         }
                     }) {
                         Image(systemName: "arrow.right")
                             .font(.largeTitle)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(currentStep == 2 ? .pink : .white)
                     }
-                    .disabled(currentStep == 4)
+                    .disabled(currentStep == 2)
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
