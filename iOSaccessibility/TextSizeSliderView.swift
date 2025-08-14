@@ -38,3 +38,4 @@ struct TextSizeSliderView: View {
         .cornerRadius(12)
     }
 }
+

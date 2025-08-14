@@ -194,3 +194,4 @@ struct ExampleView: View {
 ```
 
 This implementation provides a robust, accessible, and user-friendly text size adjustment feature that can be easily integrated into any iOS app.
+
