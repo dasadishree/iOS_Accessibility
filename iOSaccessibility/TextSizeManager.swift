@@ -19,4 +19,3 @@ class TextSizeManager: ObservableObject {
         UserDefaults.standard.set(newSize, forKey: userDefaultsKey)
     }
 }
-
