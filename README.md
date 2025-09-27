@@ -1,4 +1,5 @@
 # iOS Accessibility Tools
+https://testflight.apple.com/join/f2snTJvf
 
 An iOS app that demonstrates various accessibility features and provides step-by-step tutorials for developers to implement them in their apps. To run this on your device, please download this git repo and open the XCode project in Xcode, and build by clicking the play icon.
 
@@ -11,3 +12,5 @@ An iOS app that demonstrates various accessibility features and provides step-by
 <img width="298" height="645" alt="Screenshot 2025-08-25 at 2 46 12 PM" src="https://github.com/user-attachments/assets/2eaf4e03-b108-4432-a826-c8e4b2beefc3" />
 <img width="612" height="661" alt="Screenshot 2025-08-25 at 2 45 58 PM" src="https://github.com/user-attachments/assets/3f523f02-b9e1-4309-bd80-00d6d29c48a0" />
 <img width="293" height="636" alt="Screenshot 2025-08-25 at 2 46 25 PM" src="https://github.com/user-attachments/assets/9acabe67-4ec7-44ce-92cb-bd5a6c451f10" />
+
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
